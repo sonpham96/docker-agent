@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+    katalon-agent-windows:
+        image: sonpham/katalon-agent-windows
+        volumes:
+            - .:C:\workspace\mount
+            - ./log:C:\workspace\log
+            - ./tmp:C:\workspace\tmp
+            - home:C:\Users\agent
+        restart: unless-stopped
+        command: cmd /c mklink "agentconfig" "mount\agentconfig" & katalon-agent start-agent
+volumes:
+    home:
+        name: katalon-agent-windows
