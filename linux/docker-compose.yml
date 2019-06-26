@@ -2,12 +2,12 @@ version: '3.7'
 services:
     katalon-agent-linux:
         image: sonpham/katalon-agent-linux
+        restart: always
         volumes:
             - ./agentconfig:/workspace/agentconfig
             - ./log:/workspace/log
             - ./tmp:/workspace/tmp
             - home:/root
-        restart: unless-stopped
         command: sh -c "chmod +x katalon-agent; ./katalon-agent start-agent"
 volumes:
     home:
